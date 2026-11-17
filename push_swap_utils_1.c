@@ -70,16 +70,16 @@ void	free_both(t_group *a, t_group *b)
 	exit(1);
 }
 
-void swap(t_group *group)
+void	swap(t_group *group)
 {
-	t_node *first;
-	t_node *second;
-	
+	int	temp;
+
 	if (group == NULL || group->size < 2)
 		return ;
-	first = group->top;
-	second = first->next;
-	first->next = second->next;
-	second->next = first;
-	group->top = second;
+	temp = group->top->data;
+	group->top->data = group->top->next->data;
+	group->top->next->data = temp;
+	temp = group->top->index;
+	group->top->index = group->top->next->index;
+	group->top->next->index = temp;
 }
